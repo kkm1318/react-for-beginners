@@ -1,33 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import UnitConversion from "./UnitConversion";
 
 function App() {
-  const [toDo, setToDo] = useState("");
-  const [toDos, setToDos] = useState([]);
-  const onChange = (event) => setToDo(event.target.value);
-  const onSubmit = (event) => {
-    event.preventDefault();
-    if (!toDo) return;
-    setToDos((currentArray) => [...currentArray, toDo]);
-    setToDo("");
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [coin, setCoin] = useState("");
+  const [unit, setUnit] = useState(1);
+  useEffect(() => {
+    fetch("https://api.coinpaprika.com/v1/tickers")
+      .then((response) => response.json())
+      .then((json) => {
+        setCoins(json);
+        setLoading(false);
+      });
+  }, []);
+  const onSelect = (event) => {
+    if (event.target.value === "Select Coin") return;
+    setCoin(event.target.value);
+    const coinUnit = coins
+      .filter((coin) => event.target.value.includes(coin.name))[0]
+      .quotes.USD.price.toFixed(2);
+    setUnit(coinUnit);
   };
   return (
     <div>
-      <h1>My To Dos ({toDos.length})</h1>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          value={toDo}
-          type="text"
-          placeholder="Write your to do..."
-        />
-        <button>Add To Do</button>
-      </form>
-      <hr />
-      <ul>
-        {toDos.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+      <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
+      {loading ? (
+        <strong>Loadding...</strong>
+      ) : (
+        <div>
+          <select onChange={onSelect}>
+            <option key="">Select Coin</option>
+            {coins.map((coin) => (
+              <option key={coin.id}>
+                {coin.name} ({coin.symbol}): {coin.quotes.USD.price.toFixed(2)}
+                USD
+              </option>
+            ))}
+          </select>
+          <hr />
+          <UnitConversion selectedCoin={coin} selectedCoinUnit={unit} />
+        </div>
+      )}
     </div>
   );
 }
