@@ -4,35 +4,23 @@ import Detail from "./routes/Detail";
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Switch>
-        <Route
-          path={`${process.env.PUBLIC_URL}/hello`}
-          element={<h1>Hello</h1>}
-        ></Route>
-        <Route
-          path={`${process.env.PUBLIC_URL}/movie/:id`}
-          element={<Detail />}
-        ></Route>
+        <Route path="/hello">
+          <h1>Hello</h1>
+        </Route>
+        <Route path="/movie/:id">
+          <Detail />
+        </Route>
+        {/* Production Sources */}
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}></Route>
+        {/* Local Sources */}
+        {/* <Route path="/">
+          <Home />
+        </Route> */}
       </Switch>
     </Router>
   );
-  // return (
-  //   <Router>
-  //     <Switch>
-  //       <Route path="/hello">
-  //         <h1>Hello</h1>
-  //       </Route>
-  //       <Route path="/movie/:id">
-  //         <Detail />
-  //       </Route>
-  //       <Route path="/">
-  //         <Home />
-  //       </Route>
-  //     </Switch>
-  //   </Router>
-  // );
 }
 
 export default App;
