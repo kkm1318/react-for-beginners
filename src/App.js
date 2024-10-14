@@ -13,11 +13,11 @@ function App() {
           <Detail />
         </Route>
         {/* Production Sources */}
-        <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}></Route>
+        {/* <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}></Route> */}
         {/* Local Sources */}
-        {/* <Route path="/">
+        <Route path="/">
           <Home />
-        </Route> */}
+        </Route>
       </Switch>
     </Router>
   );
