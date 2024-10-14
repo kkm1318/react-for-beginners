@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "https://kkm1318.github.io/react-for-beginners/static/js/main.6b23bbb0.js",
-    "index.html": "https://kkm1318.github.io/react-for-beginners/index.html",
-    "main.6b23bbb0.js.map": "https://kkm1318.github.io/react-for-beginners/static/js/main.6b23bbb0.js.map"
+    "main.js": "/react-for-beginners/static/js/main.073d0c70.js",
+    "index.html": "/react-for-beginners/index.html",
+    "main.073d0c70.js.map": "/react-for-beginners/static/js/main.073d0c70.js.map"
   },
   "entrypoints": [
-    "static/js/main.6b23bbb0.js"
+    "static/js/main.073d0c70.js"
   ]
 }
