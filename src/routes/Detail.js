@@ -13,6 +13,7 @@ function Detail() {
   };
   useEffect(() => {
     getMovie();
+    // eslint-disable-next-line
   }, []);
   return (
     <div>
