@@ -12,7 +12,12 @@ function App() {
         <Route path="/movie/:id">
           <Detail />
         </Route>
+        {/* Production Sources */}
         <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}></Route>
+        {/* Local Sources */}
+        {/* <Route path="/">
+          <Home />
+        </Route> */}
       </Switch>
     </Router>
   );
