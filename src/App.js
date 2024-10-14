@@ -9,11 +9,11 @@ function App() {
         <Route path="/hello">
           <h1>Hello</h1>
         </Route>
+        <Route path="/movie/:id">
+          <Detail />
+        </Route>
         <Route path="/">
           <Home />
-        </Route>
-        <Route path="/movie">
-          <Detail />
         </Route>
       </Switch>
     </Router>
